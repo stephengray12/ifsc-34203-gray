@@ -23,10 +23,27 @@ body {
 	margin-top: 20px;
 	border: 1px solid #CCC;
 }
+
+
+ /* Please let me know if there is a better way to go about this sir. I feel like I may have went about this the wrong way. */
 #header {
+	background-image: url(../img/headerimage.jpg);
+	
+
 }
 #header h1 a {
+	
+display:block;
+width:800px;
+height:140px;
+text-indent:100%;
+overflow:hidden;
+white-space:nowrap;	
+	
 }
+/* End of question */
+
+
 #nav {
 	background-color: #000;
 }
@@ -67,11 +84,61 @@ body {
 #footer {
 	background-color: #000;
 	color: #FFF;
-	height: 25px;
+	height: 30px;
 }
+
+
 #footer h6 {
 	font-size: 12px;
-	line-height: 25px;
+	line-height: 30px;
 	margin-right: 20px;
 	margin-left: 20px;
+}
+
+/* Added assignment Styles Below */
+.alert{
+	background-color: gray;
+	color:rgb(241, 48, 0);
+	border-radius: 50px 50px ;
+	padding: 10px;
+}
+
+#content h2{
+color:rgb(252, 251, 251);
+background-color: #000000;
+padding: 10px;
+text-align: center;
+text-decoration: underline;
+}
+
+#content h3{
+color:rgb(218, 216, 216);
+background-color: #000000;
+text-align: center;
+padding: 10px;
+}
+
+
+/* Used AI to help generate gradient */
+#content h4{
+color: #f7f5f5;
+font-size: 16px;
+font-weight: bold;
+background: linear-gradient(to right, rgb(0, 0, 0), #4e4401, rgb(131, 118, 2));
+border-radius: 50px 50px ;
+padding: 10px;
+text-align: center;
+box-shadow: 10px 10px 5px #888888;
+}
+
+#footer a{
+	color: #08b8ee;
+	text-decoration: none;
+	
+}
+
+#footer p{
+	text-align: center;
+	
+	
 }
