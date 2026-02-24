@@ -17,8 +17,9 @@ body {
 h1{
     background-color: rgb(31, 30, 30);
     color: white;
-    padding: 10px;
+    padding: 20px;
     border-radius: 50px 50px;
+    
     
     
 }
@@ -59,7 +60,7 @@ nav ul li a:hover {
 }
 
 .card {
-  background: rgb(59, 59, 59);
+  background: rgb(27, 27, 27);
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 5px 15px rgba(0,0,0,0.1);
