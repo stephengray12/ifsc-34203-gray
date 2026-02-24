@@ -19,36 +19,61 @@ html {
   clear: both;
 }
 
-main {
-/* background-image: url("https://assets.codepen.io/7248/grid-1.png"); */
+ main {
 width:960px;
 margin: 20px auto;
 border: 1px solid #000;  
+display:grid;
+grid-template-columns: repeat(10,1fr);
+grid-template-rows:auto;
+gap:20px;
+padding:20px;
 }
 
-header.primary, footer.primary{
-/*  width:920px; */
- width:95.833%;
- background: rgba(0, 0, 0, 0.4);
- margin: 2.0833%;
- padding: 20px;
- float: left; 
+ header.primary{
+background: rgba(0,0,0,0.4);
+grid-column-start: 1;
+grid-column-end: 11;
+grid-row-start: 1;
+grid-row-end: 2;
+}
+
+ footer.primary{
+grid-column-start: 1;
+grid-column-end: 11;
+grid-row-start: 3;
+grid-row-end: 4;
+background: rgba(0,0,0,0.4);
+
+ }
+
+
+ #content{
+grid-column-start: 1;
+grid-column-end: 11;
+grid-row-start: 2;
+grid-row-end: 3;
+display:grid;
+grid-template-columns: subgrid;
+grid-template-rows: subgrid;
+
 }
 
 #blog{
-/*   width:638px; */
-  width: 66.4583%;
-  margin-left: 2.0833%;
-  background: rgba(0, 0, 0, 0.6);
-  padding: 20px;
-  float: left;
+background: rgba(0, 0, 0, 0.6);
+grid-column-start: 1;
+grid-column-end: 8;
+grid-row-start: 1;
+grid-row-end: 2;
+  
 
 }
 
-aside {
-  background: rgba(0, 0, 0, 0.3);
-  width: 27.2916%;
-  margin-left: 2.0833%;
-  padding: 20px;
-  float: left;
+ aside {
+background: rgba(0, 0, 0, 0.3);
+grid-column-start: 8;
+grid-column-end: 11;
+grid-row-start: 1;
+grid-row-end: 2;
+ 
 }

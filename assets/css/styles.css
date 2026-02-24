@@ -60,11 +60,12 @@ nav ul li a:hover {
 }
 
 .card {
-  background: rgb(27, 27, 27);
+  background: rgb(255, 255, 255);
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 5px 15px rgba(0,0,0,0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  
 }
 
 .card:hover {
@@ -88,7 +89,7 @@ nav ul li a:hover {
 }
 
 .card-content p {
-  color: #e4e2e2;
+  color: #000000;
   font-size: 0.95rem;
 }
 
@@ -109,6 +110,6 @@ nav ul li a:hover {
 }
 
 h3{
-    color:aquamarine;
+    color:rgb(0, 0, 0);
     text-decoration: underline;
 }
