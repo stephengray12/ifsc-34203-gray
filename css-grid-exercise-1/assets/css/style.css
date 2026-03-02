@@ -1,0 +1,120 @@
+html {
+  box-sizing: border-box;
+  color: #222;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: #f3f4f6;
+}
+
+a {
+  color: inherit;
+}
+
+.container {
+  width: min(100% - 2rem, 75rem);
+  margin-inline: auto;
+  margin-block: 1rem;
+  border: 1px solid #111;
+  padding: 1rem;
+  display: grid;
+  gap: 1rem;
+  grid-template-areas:
+    "header"
+    "content"
+    "footer";
+}
+
+header.primary {
+  grid-area: header;
+  background: rgba(0, 0, 0, 0.4);
+  color: #fff;
+  padding: 1rem;
+}
+
+header.primary h1 {
+  margin: 0;
+}
+
+.subtitle {
+  margin-top: 0.5rem;
+}
+
+nav.primary ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  list-style: none;
+  margin: 1rem 0 0;
+  padding: 0;
+}
+
+#content {
+  grid-area: content;
+  display: grid;
+  gap: 1rem;
+  grid-template-areas:
+    "blog"
+    "sidebar";
+}
+
+#blog {
+  grid-area: blog;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  padding: 1rem;
+}
+
+.post + .post {
+  margin-top: 1.5rem;
+}
+
+.post h3 {
+  margin: 0.5rem 0 0;
+}
+
+.post-meta {
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+}
+
+aside {
+  grid-area: sidebar;
+  background: rgba(0, 0, 0, 0.3);
+  color: #fff;
+  padding: 1rem;
+}
+
+.widget + .widget {
+  margin-top: 1.25rem;
+}
+
+.widget h2 {
+  margin-top: 0;
+  font-size: 1.15rem;
+}
+
+footer.primary {
+  grid-area: footer;
+  background: rgba(0, 0, 0, 0.4);
+  color: #fff;
+  padding: 1rem;
+}
+
+@media (min-width: 56rem) {
+  #content {
+    grid-template-columns: minmax(0, 2fr) minmax(15rem, 1fr);
+    grid-template-areas: "blog sidebar";
+    align-items: start;
+  }
+}
