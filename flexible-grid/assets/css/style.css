@@ -18,34 +18,37 @@ html {
   display: table; /* 2 */
 }
 
-.cf:after {
+
+.clearfix::after {
   clear: both;
 }
 
+
+
  main {
-width:960px;
+width:1280px;
 margin: 20px auto;
 border: 1px solid #000;  
 display:grid;
-grid-template-columns: repeat(10,1fr);
+grid-template-columns: repeat(12,1fr);
 grid-template-rows:auto;
 gap:20px;
-padding:20px;
+padding:10px;
 }
 
  header.primary{
 background: rgba(0,0,0,0.4);
 grid-column-start: 1;
-grid-column-end: 11;
+grid-column-end: 13;
 grid-row-start: 1;
 grid-row-end: 2;
 }
 
  footer.primary{
 grid-column-start: 1;
-grid-column-end: 11;
-grid-row-start: 3;
-grid-row-end: 4;
+grid-column-end: 13;
+grid-row-start: 4;
+grid-row-end: 5;
 background: rgba(0,0,0,0.4);
 
  }
@@ -53,7 +56,7 @@ background: rgba(0,0,0,0.4);
 
  #content{
 grid-column-start: 1;
-grid-column-end: 11;
+grid-column-end: 13;
 grid-row-start: 2;
 grid-row-end: 3;
 display:grid;
@@ -65,7 +68,7 @@ grid-template-rows: subgrid;
 #blog{
 background: rgba(0, 0, 0, 0.6);
 grid-column-start: 1;
-grid-column-end: 8;
+grid-column-end: 10;
 grid-row-start: 1;
 grid-row-end: 2;
   
@@ -74,8 +77,8 @@ grid-row-end: 2;
 
  aside {
 background: rgba(0, 0, 0, 0.3);
-grid-column-start: 8;
-grid-column-end: 11;
+grid-column-start: 10;
+grid-column-end: 13;
 grid-row-start: 1;
 grid-row-end: 2;
  
@@ -223,15 +226,6 @@ textarea {
  * `::before` to contain the top-margins of child elements.
  */
 
-.clearfix::before,
-.clearfix::after {
-  content: "";
-  display: table;
-}
-
-.clearfix::after {
-  clear: both;
-}
 
 /* ==========================================================================
    EXAMPLE Media Queries for Responsive Design.
