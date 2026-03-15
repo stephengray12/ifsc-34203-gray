@@ -37,7 +37,6 @@ html {
   --line-height: 1.6;
 }
 
-/* Reset / base */
 *,
 *::before,
 *::after {
@@ -92,7 +91,6 @@ h3 {
   margin-inline: auto;
 }
 
-
 header.container {
   position: sticky;
   top: 0;
@@ -130,7 +128,6 @@ nav.primary a:focus-visible {
   text-decoration: none;
 }
 
-
 main.container {
   container-type: inline-size;
   container-name: resume;
@@ -145,7 +142,6 @@ main.container {
   padding-block: var(--space-5) var(--space-6);
 }
 
-
 .page-title {
   grid-area: title;
   font-family: var(--font-heading);
@@ -154,7 +150,6 @@ main.container {
   letter-spacing: -0.03em;
   margin-bottom: 0;
 }
-
 
 main > section {
   background: var(--color-surface);
@@ -185,7 +180,6 @@ section h2 {
   margin-bottom: var(--space-4);
   color: var(--color-accent);
 }
-
 
 #about {
   display: grid;
@@ -247,11 +241,6 @@ section h2 {
   color: var(--color-muted);
 }
 
-.details dd[itemprop="address"] {
-  display: grid;
-  gap: 0.2rem;
-}
-
 .related-links {
   grid-area: links;
   list-style: none;
@@ -294,7 +283,6 @@ section h2 {
   font-weight: 600;
   box-shadow: var(--shadow-sm);
 }
-
 
 #experience {
   display: grid;
@@ -340,7 +328,6 @@ section h2 {
   color: var(--color-muted);
 }
 
-/* EDUCATION */
 #education {
   display: grid;
   gap: var(--space-4);
@@ -362,7 +349,6 @@ section h2 {
 
 .certificate h3 {
   grid-area: degree;
-  margin-bottom: 0;
 }
 
 .certificate > [itemprop="name"] {
@@ -381,7 +367,6 @@ section h2 {
   font-weight: 600;
 }
 
-/* Footer */
 footer {
   padding: 0 0 var(--space-5);
 }
@@ -394,100 +379,17 @@ footer {
   padding: 1rem;
 }
 
-/* -------------------------
-   CONTAINER QUERIES
--------------------------- */
+/* Mobile View */
 
-/* When the main container gets wider, place sections into a more editorial layout */
-@container resume (min-width: 850px) {
-  main.container {
-    grid-template-columns: 2fr 1fr;
-    grid-template-areas:
-      "title title"
-      "about skills"
-      "experience education";
-    align-items: start;
-  }
+@media (max-width: 599px) {
 
-  #about {
-    grid-template-columns: 1.2fr 1fr;
-    grid-template-areas:
-      "heading heading"
-      "bio details"
-      "links links";
-    align-items: start;
-  }
-
-  .related-links {
-    justify-content: start;
-  }
-
-  #education,
-  #skills {
-    position: sticky;
-    top: 6.5rem;
-  }
-}
-
-/* Tighter internal card layouts when their container is wide enough */
-@container resume (min-width: 700px) {
-  .job {
-    grid-template-columns: 1.4fr 1fr;
-    grid-template-areas:
-      "title dates"
-      "meta dates"
-      "desc desc";
-    align-items: start;
-  }
-
-  .job > div:not([itemprop="worksFor"]) {
-    text-align: right;
-  }
-
-  .certificate {
-    grid-template-columns: 2fr 1fr;
-    grid-template-areas:
-      "degree dates"
-      "school location";
-    align-items: center;
-  }
-
-  .certificate > span:last-child {
-    text-align: right;
-  }
-}
-
-/* -------------------------
-   MEDIA QUERIES
--------------------------- */
-
-@media (max-width: 768px) {
   header.container {
     position: static;
   }
 
-  nav.primary {
-    border-radius: var(--radius-md);
-    padding: 0.75rem;
-  }
-
   nav.primary ul {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.6rem;
-  }
-
-  nav.primary li {
-    display: contents;
-  }
-
-  nav.primary a {
-    width: 100%;
-    text-align: center;
-    background: var(--color-surface-alt);
-  }
-
-  main > section {
-    padding: var(--space-4);
+    grid-template-columns: 1fr;
+    justify-items: center;
   }
 
   .bio {
@@ -501,59 +403,57 @@ footer {
 
   .details {
     grid-template-columns: 1fr;
-    gap: 0.35rem;
-  }
-
-  .details dt {
-    margin-top: 0.5rem;
   }
 
   .related-links {
     grid-template-columns: 1fr;
   }
 
-  .related-links a {
-    text-align: center;
-  }
-}
-
-@media (max-width: 480px) {
-  body {
-    font-size: 0.96rem;
-  }
-
-  .page-title {
-    font-size: clamp(1.8rem, 9vw, 2.4rem);
-  }
-
-  nav.primary ul {
-    grid-template-columns: 1fr;
-  }
-
-  .bio img {
-    width: 110px;
-  }
-
   #skills ul {
     grid-template-columns: 1fr 1fr;
   }
+
 }
 
-/* Accessibility */
-a:focus-visible {
-  outline: 3px solid rgba(29, 78, 216, 0.25);
-  outline-offset: 3px;
+/* Tablet View */
+
+@media (min-width: 600px) and (max-width: 1023px) {
+
+  nav.primary ul {
+    grid-template-columns: repeat(4, auto);
+  }
+
+  .bio {
+    grid-template-columns: 120px 1fr;
+    text-align: left;
+  }
+
+  .related-links {
+    grid-template-columns: repeat(2, max-content);
+  }
+
+  #skills ul {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
 }
 
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
+/* Desktop View */
+
+@media (min-width: 1024px) {
+
+  main.container {
+    grid-template-columns: 2fr 1fr;
+    grid-template-areas:
+      "title title"
+      "about skills"
+      "experience education";
   }
 
-  *,
-  *::before,
-  *::after {
-    transition: none !important;
-    animation: none !important;
+  #education,
+  #skills {
+    position: sticky;
+    top: 6.5rem;
   }
+
 }
