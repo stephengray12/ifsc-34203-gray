@@ -1,17 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="author" content="Stephen Gray">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <title>Arkansas'Fun</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Rapid prototype for Arkansas'Fun website" />
+  <meta name="author" content="Stephen Gray">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <title>Arkansas'Fun</title>
 </head>
-<body>
-  
 
+<body class="d-flex flex-column min-vh-100">
 
+<header>
+  <nav class="navbar navbar-expand-lg navbar-dark" style="background-color:#000;">
+    <div class="container-fluid">
+    <a class="navbar-brand d-flex align-items-center" href="#">
+  <img src="images/logo.png" alt="Logo" width="50" height="50" class="me-2">
+  Arkansas'Fun
+</a>
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" href="#">Home</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="#">About</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contact</a>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+              Info
+            </a>
+
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Licenses</a></li>
+              <li><a class="dropdown-item" href="#">Maps</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">Support</a></li>
+            </ul>
+          </li>
+        </ul>
+
+        <form class="d-flex" role="search">
+          <input class="form-control me-2" type="search" placeholder="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+
+      </div>
+    </div>
+  </nav>
+</header>
+
+<main class="container mt-4 flex-grow-1">
+
+  <section class="row g-4">
+
+    <article class="col-md-4">
+      <div class="card h-100">
+        <img src="images/hiking.png" class="card-img-top" alt="Hiking">
+        <div class="card-body">
+          <h5 class="card-title">Hiking</h5>
+          <p class="card-text">
+            Arkansas offers some of the best hiking from Pinnacle Mountain to Mount Magazine!
+          </p>
+          <a href="#" class="btn btn-primary">Trail Guide</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="col-md-4">
+      <div class="card h-100">
+        <img src="images/hunting.png" class="card-img-top" alt="Hunting">
+        <div class="card-body">
+          <h5 class="card-title">Hunting</h5>
+          <p class="card-text">
+            Arkansas offers some of the best hunting in the world from white tail to wild boar!
+          </p>
+          <a href="#" class="btn btn-primary">Hunting Guide</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="col-md-4">
+      <div class="card h-100">
+        <img src="images/fishing.png" class="card-img-top" alt="Fishing">
+        <div class="card-body">
+          <h5 class="card-title">Fishing</h5>
+          <p class="card-text">
+            Arkansas offers some of the best fishing. Come throw a rod and hook a great memory!
+          </p>
+          <a href="#" class="btn btn-primary">Fishing Guide</a>
+        </div>
+      </div>
+    </article>
+
+  </section>
+
+</main>
+
+<footer class="navbar navbar-dark mt-auto" style="background-color:#000;">
+  <div class="container d-flex align-items-center justify-content-between">
+    
+    <a class="navbar-brand" href="#">
+      <img src="images/logo.png" alt="Logo" width="50" height="50">
+    </a>
+
+    <p class="text-white mb-0 mx-auto text-center">
+      Arkansas'Fun All Rights Reserved &copy; 2026
+    </p>
+
+    <div style="width:50px;"></div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>
