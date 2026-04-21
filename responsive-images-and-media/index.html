@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+
+   <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -8,6 +9,20 @@
     <title>Responsive images and media</title>
 </head>
 <body>
+
+    <img 
+        src="mountain_original.jpg" 
+        srcset="
+           images/mountain_small.jpg 320w,
+            images/mountain_med.jpg 640w,
+            images/mountain_large.jpg 1024w,
+            images/mountain_original.jpg 3000w
+        "
+        sizes="90vw"
+        alt="Mountain landscape"
+    >
     
+
 </body>
 </html>
+    
