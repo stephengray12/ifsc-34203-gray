@@ -1,0 +1,33 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #111;
+  color: white;
+  text-align: center;
+}
+
+.player {
+  width: 640px;
+  margin: 20px auto;
+  background: #222;
+  padding: 10px;
+}
+
+video {
+  width: 100%;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.controls span {
+  cursor: pointer;
+  font-size: 20px;
+}
+
+input[type="range"] {
+  flex: 1;
+}
