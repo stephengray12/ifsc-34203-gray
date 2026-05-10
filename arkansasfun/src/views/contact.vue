@@ -14,24 +14,51 @@
 
           <v-row class="ma-0 pa-4 pa-md-6" align="stretch">
             <v-col cols="12" md="5">
-              <v-card class="info-card pa-5" rounded="lg" elevation="0">
+              <v-card
+                class="info-card pa-5"
+                rounded="lg"
+                elevation="0"
+                itemscope
+                itemtype="https://schema.org/Organization"
+              >
+                <meta itemprop="name" content="Arkansas' Fun" />
                 <h2 class="text-h6 mb-4">Get In Touch</h2>
 
                 <div class="info-row">
                   <v-icon icon="mdi-email-outline" size="19" class="me-2" />
-                  <span>stephen@Arkansas'fun.org</span>
+                  <a
+                    class="info-link"
+                    href="mailto:stephen@Arkansas'fun.org"
+                    itemprop="email"
+                  >
+                    stephen@Arkansas'fun.org
+                  </a>
                 </div>
                 <div class="info-row">
                   <v-icon icon="mdi-phone-outline" size="19" class="me-2" />
-                  <span>(501) 297-8756</span>
+                  <a
+                    class="info-link"
+                    href="tel:+15012978756"
+                    itemprop="telephone"
+                  >
+                    (501) 297-8756
+                  </a>
                 </div>
-                <div class="info-row mb-4">
+                <div
+                  class="info-row mb-4"
+                  itemprop="address"
+                  itemscope
+                  itemtype="https://schema.org/PostalAddress"
+                >
                   <v-icon
                     icon="mdi-map-marker-outline"
                     size="19"
                     class="me-2"
                   />
-                  <span>Little Rock, Arkansas</span>
+                  <span>
+                    <span itemprop="addressLocality">Little Rock</span>,
+                    <span itemprop="addressRegion">AR</span>
+                  </span>
                 </div>
 
                 <v-divider class="mb-4" />
@@ -175,6 +202,15 @@ const contactTopics = [
   display: flex;
   align-items: center;
   margin-bottom: 0.75rem;
+}
+
+.info-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.info-link:hover {
+  text-decoration: underline;
 }
 
 .bottom-note {

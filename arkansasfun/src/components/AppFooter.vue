@@ -12,12 +12,25 @@
       </div>
 
       <div class="footer-copy text-body-2 text-center">
-        &copy; 2026 Arkansas Fun. All rights reserved.
+        <span itemscope itemtype="https://schema.org/Organization">
+          <meta itemprop="name" content="Arkansas' Fun" />
+          <meta itemprop="email" content="stephen@Arkansas'fun.org" />
+          <meta itemprop="url" content="/" />
+          &copy; 2026 Arkansas Fun. All rights reserved.
+        </span>
       </div>
 
-      <div class="footer-contact text-body-2 text-right">
-        <div>Little Rock, Arkansas</div>
-        <div>(501) 297-8756</div>
+      <div
+        class="footer-contact text-body-2 text-right"
+        itemprop="address"
+        itemscope
+        itemtype="https://schema.org/PostalAddress"
+      >
+        <div>
+          <span itemprop="addressLocality">Little Rock</span>,
+          <span itemprop="addressRegion">AR</span>
+        </div>
+        <div itemprop="telephone">(501) 297-8756</div>
       </div>
     </div>
   </v-footer>
