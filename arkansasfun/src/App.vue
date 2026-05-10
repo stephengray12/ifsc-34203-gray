@@ -71,6 +71,31 @@ const drawer = ref(false);
 </template>
 
 <style scoped>
+:deep(.v-card) {
+  position: relative;
+  border: 1px solid rgba(34, 211, 238, 0);
+  transition:
+    transform 220ms ease,
+    box-shadow 220ms ease,
+    border-color 220ms ease;
+}
+
+:deep(.v-card:hover) {
+  transform: translateY(-6px) scale(1.015);
+  border-color: rgba(34, 211, 238, 0.85);
+  box-shadow:
+    0 16px 30px rgba(15, 35, 65, 0.2),
+    0 0 0 2px rgba(34, 211, 238, 0.2) !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :deep(.v-card),
+  :deep(.v-card:hover) {
+    transition: none;
+    transform: none;
+  }
+}
+
 .app-shell {
   min-height: 100vh;
   display: flex;
