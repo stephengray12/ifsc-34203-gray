@@ -94,7 +94,7 @@ type WeatherData = {
   rainNow: number;
   rainChanceNext6h: number;
   rainTotalNext12h: number;
-  rainLikelySoon: boolean;
+  rainRiskLevel: "low" | "medium" | "high";
   outdoorAdvice: string;
   locationLabel: string;
 };
@@ -195,8 +195,14 @@ function buildOutdoorAdvice(weather: {
   rainChanceNext6h: number;
   rainTotalNext12h: number;
 }): string {
-  if (weather.rainChanceNext6h >= 60 || weather.rainTotalNext12h >= 0.3) {
-    return "High rain potential. Consider waterproof gear and shorter trips.";
+  const rainRiskLevel = getRainRiskLevel(weather.rainChanceNext6h);
+
+  if (rainRiskLevel === "high") {
+    return "High rain risk. Plan for wet conditions and bring rain gear.";
+  }
+
+  if (rainRiskLevel === "medium") {
+    return "Moderate rain risk. Keep a rain layer handy and watch conditions.";
   }
 
   if (weather.windSpeed >= 20) {
@@ -212,6 +218,18 @@ function buildOutdoorAdvice(weather: {
   }
 
   return "Conditions look favorable for fishing, hiking, and hunting.";
+}
+
+function getRainRiskLevel(rainChanceNext6h: number): "low" | "medium" | "high" {
+  if (rainChanceNext6h <= 20) {
+    return "low";
+  }
+
+  if (rainChanceNext6h <= 29) {
+    return "medium";
+  }
+
+  return "high";
 }
 
 function buildLocationLabel(result: {
@@ -373,6 +391,7 @@ async function fetchWeatherForCoordinates(location: ActiveLocation) {
     ? Math.max(...next6hRainChance)
     : 0;
   const rainTotalNext12h = next12hRain.reduce((sum, val) => sum + val, 0);
+  const rainRiskLevel = getRainRiskLevel(rainChanceNext6h);
 
   const advice = buildOutdoorAdvice({
     temperature: current.temperature_2m,
@@ -391,7 +410,7 @@ async function fetchWeatherForCoordinates(location: ActiveLocation) {
     rainNow: current.rain,
     rainChanceNext6h,
     rainTotalNext12h: Number(rainTotalNext12h.toFixed(2)),
-    rainLikelySoon: rainChanceNext6h >= 60,
+    rainRiskLevel,
     outdoorAdvice: advice,
     locationLabel: location.label,
   };

@@ -89,13 +89,23 @@
           <p class="advice-title">Outside Planner</p>
           <p>{{ weather.outdoorAdvice }}</p>
           <v-alert
-            v-if="weather.rainLikelySoon"
+            v-if="weather.rainRiskLevel === 'high'"
             type="warning"
             variant="tonal"
             density="comfortable"
             class="mt-3"
           >
-            Rain is likely soon. Bring rain gear or plan indoor backups.
+            High rain risk in the next few hours. Bring rain gear or plan indoor
+            backups.
+          </v-alert>
+          <v-alert
+            v-else-if="weather.rainRiskLevel === 'medium'"
+            type="info"
+            variant="tonal"
+            density="comfortable"
+            class="mt-3"
+          >
+            Moderate rain risk in the next few hours. Keep backup plans handy.
           </v-alert>
           <v-alert
             v-else
@@ -127,7 +137,7 @@ type WeatherData = {
   rainNow: number;
   rainChanceNext6h: number;
   rainTotalNext12h: number;
-  rainLikelySoon: boolean;
+  rainRiskLevel: "low" | "medium" | "high";
   outdoorAdvice: string;
   locationLabel: string;
 };
