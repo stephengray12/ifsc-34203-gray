@@ -2,174 +2,46 @@
   <v-container>
     <v-row class="mb-6">
       <v-col cols="12">
-        <v-card class="weather-card" elevation="8">
-          <v-card-title
-            class="d-flex align-center justify-space-between flex-wrap ga-2 weather-title"
-          >
-            <div class="d-flex align-center ga-2">
-              <v-icon icon="mdi-weather-partly-rainy" />
-              <span>Outdoor Weather Near You</span>
-            </div>
-            <v-btn
-              color="primary"
-              variant="outlined"
-              :loading="loading"
-              @click="loadWeather"
-            >
-              Refresh Weather
-            </v-btn>
-          </v-card-title>
-          <v-card-text class="weather-content">
-            <div class="weather-search-row">
-              <v-autocomplete
-                v-model="selectedSuggestion"
-                v-model:search="searchQuery"
-                :items="searchSuggestions"
-                item-title="label"
-                item-value="label"
-                return-object
-                label="Search city or state"
-                placeholder="Start typing (example: Little Rock, Arkansas)"
-                variant="outlined"
-                density="comfortable"
-                hide-details
-                clearable
-                :loading="searchingLocations"
-                no-data-text="No location matches yet"
-                class="weather-search-input"
-                @update:search="onSearchInput"
-                @update:model-value="onSuggestionSelected"
-                @keyup.enter="searchWeather"
-              />
-              <v-btn
-                color="secondary"
-                :loading="loading"
-                @click="searchWeather"
-              >
-                Search
-              </v-btn>
-              <v-btn
-                variant="tonal"
-                :loading="loading"
-                @click="loadCurrentLocationWeather"
-              >
-                Use My Location
-              </v-btn>
-            </div>
-
-            <div v-if="loading">Loading weather data...</div>
-            <div v-else-if="errorMessage">{{ errorMessage }}</div>
-            <div v-else-if="weather" class="weather-grid">
-              <div class="weather-summary">
-                <p class="weather-temp">{{ weather.temperature }}F</p>
-                <p class="weather-condition">{{ weather.condition }}</p>
-                <p class="weather-location">{{ weather.locationLabel }}</p>
-                <p class="weather-updated">
-                  Updated: {{ formatDateTime(weather.time) }}
-                </p>
-                <p class="weather-coords">
-                  {{ weather.latitude.toFixed(3) }},
-                  {{ weather.longitude.toFixed(3) }}
-                </p>
-              </div>
-
-              <div class="weather-metrics">
-                <v-chip class="ma-1 metrics-chip" label>
-                  Wind: {{ weather.windSpeed }} mph
-                </v-chip>
-                <v-chip class="ma-1 metrics-chip" label>
-                  Rain now: {{ weather.rainNow }} in
-                </v-chip>
-                <v-chip class="ma-1 metrics-chip" label>
-                  Rain chance (6h): {{ weather.rainChanceNext6h }}%
-                </v-chip>
-                <v-chip class="ma-1 metrics-chip" label>
-                  Expected rain (12h): {{ weather.rainTotalNext12h }} in
-                </v-chip>
-              </div>
-
-              <div class="weather-outdoor">
-                <p class="advice-title">Outside Planner</p>
-                <p>{{ weather.outdoorAdvice }}</p>
-                <v-alert
-                  v-if="weather.rainLikelySoon"
-                  type="warning"
-                  variant="tonal"
-                  density="comfortable"
-                  class="mt-3"
-                >
-                  Rain is likely soon. Bring rain gear or plan indoor backups.
-                </v-alert>
-                <v-alert
-                  v-else
-                  type="success"
-                  variant="tonal"
-                  density="comfortable"
-                  class="mt-3"
-                >
-                  Low rain risk in the next few hours. Great window for outdoor
-                  activities.
-                </v-alert>
-              </div>
-            </div>
-            <div v-else>
-              Click "Refresh Weather" to load weather for your current location.
-            </div>
-          </v-card-text>
-        </v-card>
+        <WeatherWidget
+          :weather="weather"
+          :loading="loading"
+          :errorMessage="errorMessage"
+          :searchQuery="searchQuery"
+          :searchSuggestions="searchSuggestions"
+          :selectedSuggestion="selectedSuggestion"
+          :searchingLocations="searchingLocations"
+          @onSearchInput="onSearchInput"
+          @onSuggestionSelected="onSuggestionSelected"
+          @searchWeather="searchWeather"
+          @loadCurrentLocationWeather="loadCurrentLocationWeather"
+          @loadWeather="loadWeather"
+        />
       </v-col>
     </v-row>
 
     <v-row class="activity-section" align="stretch">
-      <!-- Fishing Card -->
       <v-col cols="12" sm="6" md="4" class="d-flex">
-        <v-card class="activity-card">
-          <img
-            src="../assets/images/finishing.png"
-            alt="Fishing"
-            class="activity-image"
-          />
-          <v-card-title>Fishing</v-card-title>
-          <v-card-text class="activity-text">
-            The Natural state has a great repuation for bass, trout, catfish and
-            crappie fishing. Start with the white river! With it's guided troute
-            fishing tours, you'll have an unforgettable experience.</v-card-text
-          >
-        </v-card>
+        <ActivityCard
+          title="Fishing"
+          :image="fishingImage"
+          description="The Natural state has a great reputation for bass, trout, catfish and crappie fishing. Start with the White River! With its guided trout fishing tours, you'll have an unforgettable experience."
+        />
       </v-col>
 
-      <!-- Hiking Card -->
       <v-col cols="12" sm="6" md="4" class="d-flex">
-        <v-card class="activity-card">
-          <img
-            src="../assets/images/hiking.png"
-            alt="Hiking"
-            class="activity-image"
-          />
-          <v-card-title>Hiking</v-card-title>
-          <v-card-text class="activity-text">
-            Explore some of the best hiking around! From Mount Magazine to
-            Pinnacle Mountain, we have some of the best trails and scenic views
-            in the state.</v-card-text
-          >
-        </v-card>
+        <ActivityCard
+          title="Hiking"
+          :image="hikingImage"
+          description="Explore some of the best hiking around! From Mount Magazine to Pinnacle Mountain, we have some of the best trails and scenic views in the state."
+        />
       </v-col>
 
-      <!-- Hunting Card -->
       <v-col cols="12" sm="6" md="4" class="d-flex">
-        <v-card class="activity-card">
-          <img
-            src="../assets/images/hunting.png"
-            alt="Hunting"
-            class="activity-image"
-          />
-          <v-card-title>Hunting</v-card-title>
-          <v-card-text class="activity-text"
-            >Arkansas is known for its abundant wildlife. We have a great
-            reputation for white tail deer, turkey, and are known for the best
-            duck hunting in the world.</v-card-text
-          >
-        </v-card>
+        <ActivityCard
+          title="Hunting"
+          :image="huntingImage"
+          description="Arkansas is known for its abundant wildlife. We have a great reputation for white tail deer, turkey, and are known for the best duck hunting in the world."
+        />
       </v-col>
     </v-row>
 
@@ -180,23 +52,11 @@
             Explore Arkansas
           </v-card-title>
           <v-card-subtitle class="pb-4">
-            Ready to explore? 
+            Carousel is ready for Arkansas.com images if you have permission to
+            use them.
           </v-card-subtitle>
 
-          <v-carousel
-            height="360"
-            hide-delimiter-background
-            show-arrows="hover"
-            cycle
-            interval="5000"
-          >
-            <v-carousel-item
-              v-for="(src, i) in arkansasCarouselSlides"
-              :key="i"
-              :src="src"
-              cover
-            />
-          </v-carousel>
+          <ImageCarousel :images="arkansasCarouselSlides" />
         </v-card>
       </v-col>
     </v-row>
@@ -205,6 +65,14 @@
 
 <script setup lang="ts">
 import { onBeforeUnmount, onMounted, ref } from "vue";
+import WeatherWidget from "../components/WeatherWidget.vue";
+import ActivityCard from "../components/ActivityCard.vue";
+import ImageCarousel from "../components/ImageCarousel.vue";
+
+import fishingImage from "../assets/images/finishing.png";
+import hikingImage from "../assets/images/hiking.png";
+import huntingImage from "../assets/images/hunting.png";
+
 import slide1 from "../assets/images/slide1.jpg";
 import slide2 from "../assets/images/slide2.jpg";
 import slide3 from "../assets/images/slide3.jpg";
@@ -318,15 +186,6 @@ function getCurrentPosition(): Promise<GeolocationPosition> {
       timeout: 10000,
       maximumAge: 0,
     });
-  });
-}
-
-function formatDateTime(isoTime: string): string {
-  const date = new Date(isoTime);
-  return date.toLocaleString([], {
-    weekday: "short",
-    hour: "numeric",
-    minute: "2-digit",
   });
 }
 
